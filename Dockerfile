@@ -21,12 +21,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     cron \
     vim \
+    libldap2-dev \
+    libldap-common \
     && docker-php-ext-install opcache \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install zip \
+    && docker-php-ext-install ldap \
     && rm -rf /var/lib/apt/lists/*
 
 # set recommended PHP.ini settings
